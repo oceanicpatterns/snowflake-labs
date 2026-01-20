@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>oceanicpatterns • Snowflake Learning Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=20260119" />
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="container topbar__inner">
+            <div class="brand">
+                <span class="brand__mark brand__mark--ocean">OP</span>
+                <div>
+                    <a class="brand__link" href="https://github.com/oceanicpatterns" target="_blank" rel="noreferrer">
+                        <div class="brand__title">oceanicpatterns <span>Snowflake Learning Hub</span></div>
+                    </a>
+                    <div class="brand__subtitle">Study • Practice • Certify</div>
+                </div>
+            </div>
+            <div class="xp-banner" id="xp-banner"></div>
+            <nav class="nav">
+                <a href="#paths" data-nav="paths">Certification Paths</a>
+                <a href="#study" data-nav="study">Study Plan</a>
+                <a href="#practice" data-nav="practice">Practice</a>
+                <a href="#resources" data-nav="resources">Resources</a>
+            </nav>
+            <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav">
+                Menu
+            </button>
+            <button class="cta" data-scroll="#paths">Get Started</button>
+        </div>
+        <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+            <a href="#paths" data-nav="paths">Certification Paths</a>
+            <a href="#study" data-nav="study">Study Plan</a>
+            <a href="#practice" data-nav="practice">Practice</a>
+            <a href="#resources" data-nav="resources">Resources</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero__grid">
+                <div>
+                    <p class="eyebrow">Snowflake certifications, simplified</p>
+                    <h1>Study smarter with guided plans, focused practice, and exam-ready checklists.</h1>
+                    <p class="hero__copy">
+                        Build momentum with weekly study blocks, filterable quizzes, and clear checkpoints.
+                        Designed to help you move from core fundamentals to advanced certifications with confidence.
+                    </p>
+                    <div class="disclaimer-card">
+                        <strong>Created by oceanicpatterns.</strong>
+                        <p>
+                            This is the oceanicpatterns learning hub for anyone preparing to study and practice
+                            Snowflake certification topics.
+                        </p>
+                        <p>
+                            This training hub is an independent, community learning project. It is not official,
+                            not sponsored by Snowflake, and has no commercial affiliation with Snowflake. It is
+                            intended for learning purposes only.
+                        </p>
+                        <p>
+                            All materials here are free and open-source.
+                        </p>
+                    </div>
+                    <div class="hero__badges">
+                        <span class="pill pill--soft">Free &amp; open-source</span>
+                        <span class="pill pill--soft">Community built</span>
+                        <span class="pill pill--soft">No paywalls</span>
+                    </div>
+                    <div class="hero__actions">
+                        <button class="cta" data-scroll="#practice" data-exam="SnowPro Core">Start with SnowPro
+                            Core</button>
+                        <button class="ghost" data-scroll="#paths">Explore Paths</button>
+                    </div>
+                    <div class="hero__stats">
+                        <div>
+                            <h3>4</h3>
+                            <p>Certification tracks</p>
+                        </div>
+                        <div>
+                            <h3>32</h3>
+                            <p>Guided modules</p>
+                        </div>
+                        <div>
+                            <h3>120+</h3>
+                            <p>Practice questions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero__card">
+                    <h3>Today’s Focus</h3>
+                    <p>Performance tuning & workload strategy</p>
+                    <ul>
+                        <li>Warehouse sizing & multi-cluster scaling</li>
+                        <li>Query profile, caching, and pruning</li>
+                        <li>Optimization guardrails & cost signals</li>
+                    </ul>
+                    <button class="cta secondary" data-scroll="#study">Resume plan</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="paths">
+            <div class="container">
+                <div class="section__header">
+                    <div>
+                        <h2>Certification paths</h2>
+                        <p>Clear, modular pathways aligned to Snowflake exam objectives.</p>
+                    </div>
+                    <div class="pill">Updated Jan 2026</div>
+                </div>
+                <div class="card-grid" id="certification-grid"></div>
+                <div class="path-detail" id="path-detail"></div>
+            </div>
+        </section>
+
+        <section class="section alt" id="study">
+            <div class="container">
+                <div class="section__header">
+                    <div>
+                        <h2>Study plan builder</h2>
+                        <p>Weekly focus blocks, labs, and checkpoint reviews.</p>
+                    </div>
+                    <div class="filters">
+                        <label class="sr-only" for="study-exam-filter">Filter study plan by exam</label>
+                        <select id="study-exam-filter">
+                            <option value="all">All exams</option>
+                        </select>
+                    </div>
+                    <div class="pill">Customizable timeline</div>
+                </div>
+                <div class="filter-summary" id="study-filter-summary">Showing all exams</div>
+                <div class="timeline" id="study-plan"></div>
+            </div>
+        </section>
+
+        <section class="section" id="practice">
+            <div class="container">
+                <div class="section__header">
+                    <div>
+                        <h2>Practice questions</h2>
+                        <p>Scenario-based questions with explanations and key takeaways.</p>
+                    </div>
+                    <div class="filters">
+                        <label class="sr-only" for="exam-filter">Filter practice by exam</label>
+                        <select id="exam-filter">
+                            <option value="all">All exams</option>
+                        </select>
+                        <label class="sr-only" for="difficulty-filter">Filter practice by difficulty</label>
+                        <select id="difficulty-filter">
+                            <option value="all">All difficulty</option>
+                            <option value="Fundamental">Fundamental</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Advanced">Advanced</option>
+                        </select>
+                    </div>
+                    <div class="filter-summary" id="filter-summary">Showing all exams • All difficulty</div>
+                </div>
+                <div class="quiz-grid" id="quiz-grid"></div>
+                <div class="quiz-panel" id="quiz-panel"></div>
+                <div class="question-carousel">
+                    <div class="carousel-controls" id="question-carousel-controls"
+                        aria-label="Revision highlights navigation">
+                        <button class="ghost" id="question-prev" type="button" aria-label="Previous key ideas">
+                            ←
+                        </button>
+                        <div class="carousel-status" id="question-carousel-status" aria-live="polite">Revision
+                            highlights</div>
+                        <button class="ghost" id="question-next" type="button" aria-label="Next revision highlights">
+                            →
+                        </button>
+                    </div>
+                    <div class="card-grid" id="question-grid"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section alt" id="resources">
+            <div class="container">
+                <div class="section__header">
+                    <div>
+                        <h2>Resources & labs</h2>
+                        <p>Curated learning assets to deepen understanding and build muscle memory.</p>
+                    </div>
+                    <div class="pill">Hands-on focus</div>
+                </div>
+                <div class="resource-grid" id="resource-grid"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__grid">
+            <div>
+                <h4>Snowflake Learning Hub</h4>
+                <p>Built to guide learners from first query to certification success.</p>
+            </div>
+            <div>
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a href="#paths">Certification paths</a></li>
+                    <li><a href="#study">Study plan</a></li>
+                    <li><a href="#practice">Practice</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5>Contact</h5>
+                <p>Open a GitHub issue for support.</p>
+                <p>https://github.com/oceanicpatterns</p>
+            </div>
+            <div>
+                <h5>Disclaimer</h5>
+                <p class="footer__disclaimer">
+                    Created by Dimitris. This training hub is independent, not official, not sponsored by
+                    Snowflake, and has no commercial affiliation with Snowflake. For learning purposes only.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js?v=20260119"></script>
+</body>
+
+</html>
