@@ -1,73 +1,104 @@
-# My Snowflake Learning Hub
+# Snowflake Learning Hub
 
-A lightweight, local study portal for Snowflake certification prep. This project is **not official** and is **not affiliated with Snowflake**. All materials here are free and open-source for learning, practice, and exam preparation only.
+Independent, community-built learning portal for Snowflake certification prep.
 
-## What this includes
+This repository is configured for:
+- Local static web preview (`index.html` + `app.js` + `styles.css`)
+- Streamlit publishing (`streamlit_app.py`)
+- GitHub upload/deployment from the `main` branch
 
-- Exam-focused quizzes and question packs (Core + Advanced tracks)
-- Difficulty filtering and instant UI updates
-- Explanations for answers
-- XP + progress gamification
+## Features
 
-## Run locally (recommended)
-
-Use a simple local web server so the app can load JSON data correctly.
-
-### Option A — Python (macOS/Linux)
-
-```bash
-cd /path/to/my-snowflake-labs
-python3 -m http.server 5173
-```
-
-Open <http://localhost:5173> in your browser.
-
-### Option B — Python (Windows)
-
-```bash
-cd C:\path\to\my-snowflake-labs
-python -m http.server 5173
-```
-
-Open <http://localhost:5173> in your browser.
+- Certification path cards and study plan timeline
+- Exam and difficulty filters
+- Quiz flow with explanations and score feedback
+- XP/level gamification using browser local storage
+- Resource links for hands-on practice
 
 ## Project structure
 
-```
+```text
 my-snowflake-labs/
-├─ index.html       # UI layout
-├─ styles.css       # Styling
-├─ app.js           # App logic (rendering, filters, quiz flow)
-└─ data/
-   └─ content-v3.json  # Study content (quizzes + questions)
+├─ .streamlit/
+│  └─ config.toml
+├─ data/
+│  └─ content-v3.json
+├─ app.js
+├─ index.html
+├─ LICENSE
+├─ README.md
+├─ requirements.txt
+├─ streamlit_app.py
+└─ styles.css
 ```
 
-## Customize content
+## Quick start (local)
 
-All quizzes and questions live in:
+1. Create and activate a virtual environment.
+2. Install dependencies.
+3. Run Streamlit.
 
-- data/content-v3.json
+```bash
+cd /Users/dimitris/VSCode/snowflake-labs/my-snowflake-labs
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+streamlit run streamlit_app.py
+```
 
-You can add new question packs by:
+Open `http://localhost:8501`.
 
-1. Adding a quiz object in `examQuizzes`.
-2. Creating question objects in `questions` with matching `questionIds`.
+## Static preview option
 
-## Tips for studying
+```bash
+cd /Users/dimitris/VSCode/snowflake-labs/my-snowflake-labs
+python3 -m http.server 5173
+```
 
-- Use the filters to focus on one exam or difficulty.
-- Mix “domain packs” with “scenario packs” to test applied knowledge.
-- Revisit explanations to strengthen weak areas.
+Open `http://localhost:5173`.
 
-## Troubleshooting
+## Streamlit Community Cloud publish
 
-- **Blank page or no questions**: ensure you’re running a local server (not opening index.html directly).
-- **Port already in use**: change the port, e.g. `python3 -m http.server 5180`.
+1. Push this repo to GitHub.
+2. In Streamlit Community Cloud, create a new app from this repo.
+3. Set:
+- Branch: `main`
+- Main file path: `streamlit_app.py`
+4. Deploy.
+
+## GitHub upload checklist (main branch)
+
+```bash
+cd /Users/dimitris/VSCode/snowflake-labs/my-snowflake-labs
+git init
+git checkout -B main
+git add .
+git commit -m "Prepare repo for Streamlit publishing"
+git remote add origin <YOUR_GITHUB_REPO_URL>
+git push -u origin main
+```
+
+If the repo already exists locally, skip `git init` and only run the missing steps.
+
+## Content management
+
+Study content is maintained in:
+- `data/content-v3.json`
+
+When updating content:
+1. Keep IDs stable.
+2. Keep quiz `questionIds` aligned with `quizQuestions` IDs.
+3. Validate JSON formatting before committing.
+
+## Security and repository hygiene
+
+- Secrets are not required for this app.
+- `.streamlit/secrets.toml` is ignored by git.
+- Keep `main` protected in GitHub settings (recommended):
+- Require pull request before merge.
+- Require status checks before merge.
 
 ## Disclaimer
 
-This is an independent, community-built learning portal. Content is for educational use only and does not represent official Snowflake materials or guarantees.
-
-## Contact
-
-Open a GitHub issue in this repo for questions or requests. If issues are disabled, use the GitHub profile contact options here: <https://github.com/oceanicpatterns>
+This project is independent and not official, sponsored, or affiliated with Snowflake.
+It is for education and practice only.

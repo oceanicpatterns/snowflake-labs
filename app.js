@@ -1,4 +1,11 @@
 const loadData = async () => {
+    if (typeof window !== "undefined" && window.__SF_CONTENT__) {
+        if (typeof window.__SF_CONTENT__ === "string") {
+            return JSON.parse(window.__SF_CONTENT__);
+        }
+        return window.__SF_CONTENT__;
+    }
+
     const response = await fetch(`data/content-v3.json?v=${Date.now()}`);
     if (!response.ok) {
         throw new Error("Failed to load content");
