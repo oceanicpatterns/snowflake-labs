@@ -66,6 +66,17 @@ Open `http://localhost:5173`.
 - Main file path: `streamlit_app.py`
 4. Deploy.
 
+## GitHub Pages publish (public static site)
+
+This repository is configured with `.github/workflows/pages.yml` to deploy the static app from `main`.
+
+Expected URL:
+- `https://oceanicpatterns.github.io/snowflake-labs/`
+
+Notes:
+- GitHub Pages serves the static web app (`index.html`, `styles.css`, `app.js`, `data/content-v3.json`).
+- `streamlit_app.py` is for Streamlit hosting, not GitHub Pages runtime.
+
 ## GitHub upload checklist (main branch)
 
 ```bash
