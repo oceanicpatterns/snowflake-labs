@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import base64
 import json
 import re
 from pathlib import Path
@@ -24,7 +25,9 @@ def _build_embedded_app_html() -> str:
     css = _read_text(ROOT / "styles.css")
     js = _read_text(ROOT / "app.js")
     content = _read_text(ROOT / "data" / "content-v3.json")
-    content_json = json.dumps(json.loads(content), ensure_ascii=False)
+    # Validate JSON once and pass it as base64 to avoid inline script injection edge cases.
+    validated_content = json.dumps(json.loads(content), ensure_ascii=False)
+    content_b64 = base64.b64encode(validated_content.encode("utf-8")).decode("ascii")
 
     # Strip external asset links so Streamlit can render one self-contained bundle.
     index_html = re.sub(
@@ -39,10 +42,22 @@ def _build_embedded_app_html() -> str:
         index_html,
         flags=re.IGNORECASE,
     )
+    index_html = re.sub(
+        r'<link[^>]+fonts\.(googleapis|gstatic)\.com[^>]*>\s*',
+        "",
+        index_html,
+        flags=re.IGNORECASE,
+    )
 
     injected_assets = (
         f"<style>{css}</style>\n"
-        f"<script>window.__SF_CONTENT__ = {content_json};</script>\n"
+        "<script>"
+        "const sfBinary = atob('"
+        f"{content_b64}"
+        "');"
+        "const sfBytes = Uint8Array.from(sfBinary, ch => ch.charCodeAt(0));"
+        "window.__SF_CONTENT__ = JSON.parse(new TextDecoder().decode(sfBytes));"
+        "</script>\n"
         f"<script>{js}</script>\n"
     )
 

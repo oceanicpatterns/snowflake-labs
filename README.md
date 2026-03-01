@@ -94,6 +94,7 @@ When updating content:
 
 - Secrets are not required for this app.
 - `.streamlit/secrets.toml` is ignored by git.
+- Vulnerability reporting process is documented in `SECURITY.md`.
 - Keep `main` protected in GitHub settings (recommended):
 - Require pull request before merge.
 - Require status checks before merge.
