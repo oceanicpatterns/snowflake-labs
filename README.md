@@ -39,7 +39,7 @@ my-snowflake-labs/
 3. Run Streamlit.
 
 ```bash
-cd /Users/dimitris/VSCode/snowflake-labs/my-snowflake-labs
+cd /Users/<your-username>/VSCode/snowflake-labs/my-snowflake-labs
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -51,7 +51,7 @@ Open `http://localhost:8501`.
 ## Static preview option
 
 ```bash
-cd /Users/dimitris/VSCode/snowflake-labs/my-snowflake-labs
+cd /Users/<your-username>/VSCode/snowflake-labs/my-snowflake-labs
 python3 -m http.server 5173
 ```
 
@@ -80,7 +80,7 @@ Notes:
 ## GitHub upload checklist (main branch)
 
 ```bash
-cd /Users/dimitris/VSCode/snowflake-labs/my-snowflake-labs
+cd /Users/<your-username>/VSCode/snowflake-labs/my-snowflake-labs
 git init
 git checkout -B main
 git add .
